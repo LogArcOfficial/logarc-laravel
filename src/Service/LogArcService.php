@@ -53,24 +53,25 @@ class LogArcService
     /**
      * Logs a debug message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function debug(string|array $data): void
+    public function debug(string $message = null, array $data = null): void
     {
-        $this->log($data, 'debug');
+        $this->log('debug', $message, $data);
     }
 
     /**
      * Formats and sends the log data to the logging service.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @param string $level The log level (e.g., debug, error, info).
      * @throws ConnectionException If the HTTP request fails.
      */
-    private function log(string|array $data, string $level): void
+    private function log(string $level, string $message = null, array $data = null): void
     {
-        $type = DataFormatter::detectType($data);
         $traceback = debug_backtrace();
         $className = $traceback[3]['class'] ?? 'UnknownClass';
         $methodName = $traceback[3]['function'] ?? 'UnknownMethod';
@@ -84,8 +85,8 @@ class LogArcService
             'class_name' => $className,
             'method_name' => $methodName,
             'line_number' => $lineNumber,
-            'message' => $type === 'string' ? $data : null,
-            'data' => $type === 'array' ? $data : null,
+            'message' => $message,
+            'data' => $data,
             'user' => auth()->check() ? auth()->user()->toArray() : null,
         ]);
     }
@@ -111,77 +112,84 @@ class LogArcService
     /**
      * Logs an error message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function error(string|array $data): void
+    public function error(string $message = null, array $data = null): void
     {
-        $this->log($data, 'error');
+        $this->log('error', $message, $data);
     }
 
     /**
      * Logs an informational message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function info(string|array $data): void
+    public function info(string $message = null, array $data = null): void
     {
-        $this->log($data, 'info');
+        $this->log('info', $message, $data);
     }
 
     /**
      * Logs a notice message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function notice(string|array $data): void
+    public function notice(string $message = null, array $data = null): void
     {
-        $this->log($data, 'notice');
+        $this->log('notice', $message, $data);
     }
 
     /**
      * Logs a warning message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function warning(string|array $data): void
+    public function warning(string $message = null, array $data = null): void
     {
-        $this->log($data, 'warning');
+        $this->log('warning', $message, $data);
     }
 
     /**
      * Logs a critical message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function critical(string|array $data): void
+    public function critical(string $message = null, array $data = null): void
     {
-        $this->log($data, 'critical');
+        $this->log('critical', $message, $data);
     }
 
     /**
      * Logs an alert message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function alert(string|array $data): void
+    public function alert(string $message = null, array $data = null): void
     {
-        $this->log($data, 'alert');
+        $this->log('alert', $message, $data);
     }
 
     /**
      * Logs an emergency message.
      *
-     * @param string|array $data The data to log.
+     * @param string|null $message The message to log.
+     * @param array|null $data The data to log.
      * @throws ConnectionException If the HTTP request fails.
      */
-    public function emergency(string|array $data): void
+    public function emergency(string $message = null, array $data = null): void
     {
-        $this->log($data, 'emergency');
+        $this->log('emergency', $message, $data);
     }
 }
