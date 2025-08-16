@@ -1,0 +1,40 @@
+{
+    "name": "dipesh79/logarc-laravel",
+    "description": "LogArc Laravel - A Laravel package for logging with LogArc.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Dipesh79\\LogArcLaravel\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Dipesh79\\LogArcLaravel\\Tests\\": "tests/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Dipesh79",
+            "email": "dipeshkhanal79@gmail.com",
+            "homepage": "https://www.khanaldipesh.com.np",
+            "role": "Maintainer"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^9.0",
+        "orchestra/testbench": "^7.0"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Dipesh79\\LogArcLaravel\\LogArcServiceProvider"
+            ],
+            "aliases": {
+                "LogArc": "Dipesh79\\LogArcLaravel\\Facades\\LogArc"
+            }
+        }
+    }
+}
