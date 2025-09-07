@@ -5,7 +5,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/dipesh79/logarc-laravel)](https://packagist.org/packages/dipesh79/logarc-laravel)
 [![License](https://img.shields.io/packagist/l/dipesh79/logarc-laravel)](https://packagist.org/packages/dipesh79/logarc-laravel)
 
-This Laravel package allows you to integrate PhonePe payment on your Laravel Application.
+This Laravel package allows you to integrate logarc on your Laravel Application.
 
 ## Quick Start
 
